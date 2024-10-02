@@ -1,0 +1,34 @@
+psql —username=freecodecamp —dbname=postgres
+
+pg_dump -cC --inserts -U freecodecamp salon > salon.sql
+psql -U postgres < salon.sql
+psql -U postgres < salon.sql
+
+
+CREATE DATABASE salon;
+\c salon;
+
+CREATE TABLE customers (
+	customer_id SERIAL PRIMARY KEY, 
+	phone VARCHAR(15) UNIQUE, 
+	name VARCHAR(50)
+);
+
+CREATE TABLE appointments (
+	appointment_id SERIAL PRIMARY KEY, 
+	customer_id INT NOT NULL, 
+	service_id INT NOT NULL, 
+	time VARCHAR(15)
+);
+
+CREATE TABLE services (
+	service_id SERIAL PRIMARY KEY, 
+	name VARCHAR(50)
+);
+
+ALTER TABLE appointments ADD FOREIGN KEY (customer_id) REFERENCES customers(customer_id);
+
+ALTER TABLE appointments ADD FOREIGN KEY (service_id) REFERENCES services(service_id);
+
+INSERT INTO services(service_id, name) VALUES(1, 'cut'), (2, 'color'), (3, 'perm'), (4, 'style'), (5, 'trim');
+
