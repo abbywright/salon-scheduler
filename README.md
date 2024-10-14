@@ -2,7 +2,7 @@
 
 Create an interactive Bash program that uses PostgreSQL to track the customers and appointments for your salon.
 
-#### Subtasks
+### Subtasks
 
 - You should create a database named `salon`
 - You should connect to your database, then create tables named `customers`, `appointments`, and `services`
